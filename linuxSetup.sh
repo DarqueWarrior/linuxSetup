@@ -68,4 +68,4 @@ echo GRADLE_HOME=$(which gradle) >> .Env
 echo dotnet=$(which dotnet) >> .Env
 echo docker=$(which docker) >> .Env
 
-./config.sh
+# ./config.sh
