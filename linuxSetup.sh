@@ -52,3 +52,20 @@ if [ ! -d "$ad" ]; then
    mkdir "$ad"
 fi
 cd "$ad"
+
+mkdir "a1"
+cd "a1"
+
+tar xzf ~/Downloads/vsts-agent-ubuntu.14.04-x64-2.101.1.tar.gz
+
+# Setup Capabilities
+export M2_HOME=$(which mvn)
+export ANT_HOME=$(which ant)
+export GRADLE_HOME=$(which gradle)
+export dotnet=$(which dotnet)
+export docker=$(which docker)
+
+# Prime the .Env file for the agent
+./env.sh
+
+./config.sh
