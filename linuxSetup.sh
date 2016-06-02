@@ -41,20 +41,20 @@ sudo apt install -y dotnet-dev-1.0.0-preview1-002702
 # Download agent
 dl=~/Downloads
 if [ ! -d "$dl" ]; then
-   mkdir "$dl"
+   mkdir ~/Downloads
 fi
-cd "d1"
+cd ~/Downloads
 wget https://github.com/Microsoft/vsts-agent/releases/download/v2.101.1/vsts-agent-ubuntu.14.04-x64-2.101.1.tar.gz
 
 # Stamp out an Agent
 ad=~/Agents
 if [ ! -d "$ad" ]; then
-   mkdir "$ad"
+   mkdir ~/Agents
 fi
-cd "$ad"
+cd ~/Agents
 
-mkdir "a1"
-cd "a1"
+mkdir a1
+cd a1
 
 tar xzf ~/Downloads/vsts-agent-ubuntu.14.04-x64-2.101.1.tar.gz
 
