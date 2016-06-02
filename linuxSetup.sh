@@ -58,14 +58,14 @@ cd a1
 
 tar xzf ~/Downloads/vsts-agent-ubuntu.14.04-x64-2.101.1.tar.gz
 
-# Setup Capabilities
-export M2_HOME=$(which mvn)
-export ANT_HOME=$(which ant)
-export GRADLE_HOME=$(which gradle)
-export dotnet=$(which dotnet)
-export docker=$(which docker)
-
 # Prime the .Env file for the agent
 ./env.sh
+
+# Setup Capabilities
+echo M2_HOME=$(which mvn) >> .Env
+echo ANT_HOME=$(which ant) >> .Env 
+echo GRADLE_HOME=$(which gradle) >> .Env                  
+echo dotnet=$(which dotnet) >> .Env
+echo docker=$(which docker) >> .Env
 
 ./config.sh
