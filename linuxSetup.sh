@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Add .NET Core repo with key
+sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
+sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
+
 # Make sure you have the lastest packages
 sudo apt -y -q update
 
@@ -29,7 +33,5 @@ wget http://security.ubuntu.com/ubuntu/pool/main/i/icu/libicu52_52.1-8ubuntu0.2_
 sudo dpkg -i libicu52_52.1-8ubuntu0.2_amd64.deb
 rm libicu52_52.1-8ubuntu0.2_amd64.deb
 
-# Install 
-sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
-sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
+# Install  
 sudo apt install -y dotnet-dev-1.0.0-preview1-002702
