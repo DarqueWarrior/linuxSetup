@@ -64,8 +64,10 @@ tar xzf ~/Downloads/vsts-agent-ubuntu.14.04-x64-2.101.1.tar.gz
 # Setup Capabilities
 echo M2_HOME=$(which mvn) >> .Env
 echo ANT_HOME=$(which ant) >> .Env 
-echo GRADLE_HOME=$(which gradle) >> .Env                  
 echo dotnet=$(which dotnet) >> .Env
-echo docker=$(which docker) >> .Env
+echo GRADLE_HOME=$(which gradle) >> .Env
 
-# ./config.sh
+# Not all machines will have docker
+if [ -z "$(which docker)" ]; then
+   echo docker=$(which docker) >> .Env
+fi
