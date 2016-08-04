@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Add .NET Core repo with key
-sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
+sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
 sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
 
 # Make sure you have the lastest packages
@@ -25,7 +25,7 @@ sudo npm install -g bower gulp grunt
 # Install Maven, and and gradle for Java support
 sudo apt install -y maven ant gradle
 
-# Install .NET Core RC2 & Agent
+# Install .NET Core & Agent
 # Install Prereq
 sudo apt install -y libunwind8 libcurl3
 
@@ -36,7 +36,7 @@ sudo dpkg -i libicu52_52.1-8ubuntu0.2_amd64.deb
 rm libicu52_52.1-8ubuntu0.2_amd64.deb
 
 # Install  
-sudo apt install -y dotnet-dev-1.0.0-preview1-002702
+sudo apt install -y dotnet-dev-1.0.0-preview2-003121
 
 # Download agent
 dl=~/Downloads
@@ -44,7 +44,7 @@ if [ ! -d "$dl" ]; then
    mkdir ~/Downloads
 fi
 cd ~/Downloads
-wget https://github.com/Microsoft/vsts-agent/releases/download/v2.101.1/vsts-agent-ubuntu.14.04-x64-2.101.1.tar.gz
+wget https://github.com/Microsoft/vsts-agent/releases/download/v2.104.1/vsts-agent-ubuntu.16.04-x64-2.104.1.tar.gz
 
 # Stamp out an Agent
 ad=~/Agents
@@ -56,18 +56,18 @@ cd ~/Agents
 mkdir a1
 cd a1
 
-tar xzf ~/Downloads/vsts-agent-ubuntu.14.04-x64-2.101.1.tar.gz
+tar xzf ~/Downloads/vsts-agent-ubuntu.16.04-x64-2.104.1.tar.gz
 
 # Prime the .Env file for the agent
 ./env.sh
 
 # Setup Capabilities
-echo M2_HOME=$(which mvn) >> .Env
-echo ANT_HOME=$(which ant) >> .Env 
-echo dotnet=$(which dotnet) >> .Env
-echo GRADLE_HOME=$(which gradle) >> .Env
+echo M2_HOME=$(which mvn) >> .env
+echo ANT_HOME=$(which ant) >> .env 
+echo dotnet=$(which dotnet) >> .env
+echo GRADLE_HOME=$(which gradle) >> .env
 
 # Not all machines will have docker
 if [ -z "$(which docker)" ]; then
-   echo docker=$(which docker) >> .Env
+   echo docker=$(which docker) >> .env
 fi
